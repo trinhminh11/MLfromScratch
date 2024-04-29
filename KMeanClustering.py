@@ -87,16 +87,16 @@ class KMeansClustering:
 		
 		return labels
 	
-	# plot first 2 dims of X
-	def plot(self, X):
-		for cluster in self.cluster:
-			point = X[cluster].T
-			plt.scatter(*point[:2])
-		
-		for point in self.centroids:
-			plt.scatter(*point[:2], marker = 'X', color = 'black', linewidths=2)
+# plot first 2 dims of X
+def plot(X, model: KMeansClustering):
+	for cluster in model.cluster:
+		point = X[cluster].T
+		plt.scatter(*point[:2])
+	
+	for point in model.centroids:
+		plt.scatter(*point[:2], marker = 'X', color = 'black', linewidths=2)
 
-		plt.show()
+	plt.show()
 
 
 def main():
@@ -108,7 +108,7 @@ def main():
 	model.fit(X)
 	
 
-	model.plot(X)
+	plot(X, model)
 
 
 
