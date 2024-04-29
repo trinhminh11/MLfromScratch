@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn import datasets
-from collections import Counter
+from utils import most_common_value
 
 random_seed = 0
 np.random.seed(random_seed)
@@ -76,7 +76,7 @@ class DecisionTree:
 
 		# at leaf node
 		if depth >= self.max_depth or n_labels == 1 or n_samples < self.min_samples_split:
-			value = Counter(y).most_common(1)[0][0]
+			value = most_common_value(y)
 			return self.Node(value=value)
 
 		# get random indexs

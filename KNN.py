@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import datasets
 from matplotlib.colors import ListedColormap
 from math import dist
-from collections import Counter
+from utils import most_common_value
 
 random_seed = 0
 
@@ -26,8 +26,7 @@ class KNN:
 		k_nearest = self.y[k_indices]
 		
 		# get the most common value in k_nearest
-		most_common = Counter(k_nearest).most_common(1)[0][0]
-		return most_common
+		return most_common_value(k_nearest)
 
 	def score(self, X, y):
 		res = self.predict(X) == y
